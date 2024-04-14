@@ -1,0 +1,36 @@
+<project name="my-java-project" default="compile">
+
+    <!-- Define properties -->
+    <property name="src.dir" value="../src" />
+    <property name="build.dir" value="." />
+    <property name="classes.dir" value="${build.dir}/classes" />
+    <property name="lib.dir" value="C:\Users\whydo\my-java-project\lib" />
+
+    <!-- Define lib directory -->
+
+    <!-- Define targets -->
+    <target name="init">
+        <!-- Create build directory if it doesn't exist -->
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <!-- Define classpath -->
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <target name="compile" depends="init">
+        <!-- Compile Java source files -->
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
+            <classpath>
+                <!-- Use classpath defined above -->
+                <path refid="classpath" />
+            </classpath>
+        </javac>
+    </target>
+
+    <!-- Add more targets as needed -->
+
+</project>

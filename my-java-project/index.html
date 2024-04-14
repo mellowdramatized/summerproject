@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Door Control</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Garage Door Control</h1>
+        <!-- Passcode input field -->
+        <form id="passcodeForm">
+            <input type="text" id="passcode" placeholder="Enter passcode">
+            <button type="submit">Submit</button>
+        </form>
+        <button id="openButton" style="display: none;">Open Door</button>
+        <button id="closeButton" style="display: none;">Close Door</button>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        document.getElementById("passcodeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const enteredPasscode = document.getElementById("passcode").value;
+            const correctPasscode = "1234"; // Replace with your actual passcode
+            if (enteredPasscode === correctPasscode) {
+                // Passcode is correct, show the control buttons
+                document.getElementById("openButton").style.display = "block";
+                document.getElementById("closeButton").style.display = "block";
+                // Optionally, you can hide the passcode input field and submit button
+                document.getElementById("passcodeForm").style.display = "none";
+            } else {
+                // Passcode is incorrect, show an error message
+                alert("Incorrect passcode. Please try again.");
+                // Optionally, you can clear the input field for the user to try again
+                document.getElementById("passcode").value = "";
+            }
+        });
+
+        // JavaScript code for controlling the garage door (to be implemented later)
+        document.getElementById("openButton").addEventListener("click", function() {
+            // Code to open the garage door
+            alert("Opening the garage door...");
+        });
+
+        document.getElementById("closeButton").addEventListener("click", function() {
+            // Code to close the garage door
+            alert("Closing the garage door...");
+        });
+    </script>
+</body>
+</html>
